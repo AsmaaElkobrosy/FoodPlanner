@@ -3,38 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScrFragment">
+    app:startDestination="@id/homeFragment">
 
-    <fragment
-        android:id="@+id/splashScrFragment"
-        android:name="com.example.myfoodplannerapplication.SplashScrFragment"
-        android:label="fragment_splash_scr"
-        tools:layout="@layout/fragment_splash_scr" >
-        <action
-            android:id="@+id/action_splashScrFragment_to_logInFragment"
-            app:destination="@id/logInFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.example.myfoodplannerapplication.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
-        <action
-            android:id="@+id/action_signUpFragment_to_logInFragment"
-            app:destination="@id/logInFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/logInFragment"
-        android:name="com.example.myfoodplannerapplication.LogInFragment"
-        android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in" >
-        <action
-            android:id="@+id/action_logInFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_logInFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.myfoodplannerapplication.HomeFragment"
