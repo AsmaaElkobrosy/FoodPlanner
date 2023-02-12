@@ -104,6 +104,7 @@ GoogleSignInClient googlesignInClient;
         signupbutton = view.findViewById(R.id.signupbtn);
         loginRedirectTeXT = view.findViewById(R.id.loginredirecttext);
         googleSignInButton = view.findViewById(R.id.googlebtn);
+        fb_Btn= view.findViewById(R.id.facebookBtn);
 
 
 
@@ -154,33 +155,8 @@ GoogleSignInClient googlesignInClient;
             }
         });
 
-    }
-    @Override
-    public void onActivityResult(int requestCode,int resultCode,Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==1000){
-            Task<GoogleSignInAccount> task= GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                task.getResult(ApiException.class);
-                getActivity().finish();
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
-
-            }catch (ApiException e){
-                Toast.makeText(getContext(),"Something went wrong",Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        fb_Btn= view.findViewById(R.id.facebookBtn);
-
+        //Facebook
         callbackManager = CallbackManager.Factory.create();
-
-        //loginButton.setReadPermissions(Arrays.asList(EMAIL));
-        //LoginManager.getInstance().logInWithPublishPermissions(getActivity(), Arrays.asList(EMAIL));
 
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -206,12 +182,25 @@ GoogleSignInClient googlesignInClient;
                 LoginManager.getInstance().logInWithPublishPermissions(getActivity(), Arrays.asList("public_profile"));
             }
         });
+
     }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==1000){
+            Task<GoogleSignInAccount> task= GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                getActivity().finish();
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
 
-        // Pass the activity result back to the Facebook SDK
+            }catch (ApiException e){
+                Toast.makeText(getContext(),"Something went wrong",Toast.LENGTH_LONG).show();
+            }
+        }
+
+        //Facebook
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 

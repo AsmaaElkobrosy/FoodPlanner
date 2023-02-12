@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_registration"
-    app:startDestination="@id/signUpFragment">
+    app:startDestination="@id/logInFragment">
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.myfoodplannerapplication.SignUpFragment"

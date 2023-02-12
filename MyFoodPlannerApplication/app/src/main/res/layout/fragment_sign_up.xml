@@ -43,7 +43,7 @@
         android:id="@+id/signup_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="19dp"
         android:background="@drawable/buttons"
         android:drawableStart="@drawable/email_icon"
         android:drawablePadding="4dp"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="59dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="56dp"
         android:text="Or create account using social media"
         android:textSize="18dp"
@@ -114,6 +114,21 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="771dp" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="cursive"
+        android:text="Sign up"
+        android:textColor="@color/black_new"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.developer.gbuttons.GoogleSignInButton
         android:id="@+id/googlebtn"
@@ -129,25 +144,16 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <ImageView
-        android:id="@+id/gicon"
-        android:layout_width="75dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="116dp"
-        android:src="@drawable/googlelogo"
-        app:layout_constraintBottom_toBottomOf="@+id/facebookBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/facebookBtn"
-        app:layout_constraintVertical_bias="0.0" />
-
     <com.facebook.login.widget.LoginButton
         android:id="@+id/facebookBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/gicon"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/googlebtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/googlebtn"
+        app:layout_constraintTop_toBottomOf="@+id/googlebtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

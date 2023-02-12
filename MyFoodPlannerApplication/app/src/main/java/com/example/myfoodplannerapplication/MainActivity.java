@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView2,fragment);
+        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
         fragmentTransaction.commit();
     }
 
