@@ -31,8 +31,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        drawerLayout = view.findViewById(R.id.drawerlayout);
-        navigationView = view.findViewById(R.id.nav_view);
 
     }
 
@@ -50,34 +48,7 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.home_menu,menu);
-        super.onCreateOptionsMenu(menu,inflater);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id= item.getItemId();
-        if (id == R.id.nav_home){
-            Toast.makeText(getActivity(),"Home",Toast.LENGTH_LONG).show();
-        }
-        if (id == R.id.nav_favourites){
-            Toast.makeText(getActivity(),"Favourites",Toast.LENGTH_LONG).show();
-        }
-        if (id == R.id.nav_plan){
-            Toast.makeText(getActivity(),"Plan",Toast.LENGTH_LONG).show();
-        }
-        if (id == R.id.nav_country){
-            Toast.makeText(getActivity(),"Country",Toast.LENGTH_LONG).show();
-        }
-        if (id == R.id.nav_category){
-            Toast.makeText(getActivity(),"Category",Toast.LENGTH_LONG).show();
-        }
-        if (id == R.id.nav_ingredients){
-            Toast.makeText(getActivity(),"Ingredients",Toast.LENGTH_LONG).show();
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
+
 }
