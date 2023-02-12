@@ -11,4 +11,11 @@
     <string name="close">Close Navigation Drawer</string>
     <string name="play">Play</string>
     <string name="week">Weekly</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="area">Area</string>
+    <string name="category">Category</string>
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+
 </resources>
