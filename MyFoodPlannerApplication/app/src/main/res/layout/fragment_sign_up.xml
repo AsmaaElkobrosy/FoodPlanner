@@ -135,27 +135,33 @@
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <ImageView
-        android:id="@+id/fbicon"
-        android:layout_width="75dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/fblogo"
-        app:layout_constraintEnd_toStartOf="@+id/gicon"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <ImageView
         android:id="@+id/gicon"
         android:layout_width="75dp"
         android:layout_height="49dp"
         android:layout_marginEnd="116dp"
         android:src="@drawable/googlelogo"
-        app:layout_constraintBottom_toBottomOf="@+id/fbicon"
+        app:layout_constraintBottom_toBottomOf="@+id/facebookBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fbicon"
+        app:layout_constraintTop_toTopOf="@+id/facebookBtn"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebookBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/gicon"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+
+    <!--com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" /-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
