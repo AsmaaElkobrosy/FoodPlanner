@@ -54,8 +54,22 @@ public class MealFullDetailes {
         return ingredients;
     }
 
-    public void setIngredients(String ingredient){
-        ingredients.add(ingredient);
+    public  ArrayList<String> setIngredients(){
+        ingredients.add(strIngredient1);
+        ingredients.add(strIngredient2);
+        ingredients.add(strIngredient3);
+        ingredients.add(strIngredient4);
+        ingredients.add(strIngredient5);
+        ingredients.add(strIngredient6);
+        ingredients.add(strIngredient7);
+        ingredients.add(strIngredient8);
+        ingredients.add(strIngredient9);
+        ingredients.add(strIngredient10);
+        ingredients.add(strIngredient11);
+        ingredients.add(strIngredient12);
+        ingredients.add(strIngredient13);
+
+        return ingredients;
     }
 
     public ArrayList<String> getMeasures(){

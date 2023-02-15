@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,17 +23,27 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding mainBinding;
     GoogleSignInOptions googlesignInOptions;
     GoogleSignInClient googlesignInClient;
+    NavController navController;
+    FirebaseAuth auth;
+    FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*navController= Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController);*/
+
+        HomeFragment _home= new HomeFragment();
+
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
-        replaceFragment(new HomeFragment());
+        //replaceFragment(new HomeFragment());
 
         googlesignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googlesignInClient = GoogleSignIn.getClient(this,googlesignInOptions);
@@ -47,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
 
                 case R.id.nav_home:
-                    replaceFragment(new HomeFragment());
+                    replaceFragment(_home);
                     Toast.makeText(getApplicationContext(),"Home page",Toast.LENGTH_SHORT).show();
 
                     break;
@@ -60,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Your Weekly Plan",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.nav_search:
-                    replaceFragment(new SearchFragment());
+                    replaceFragment(new SearchTypesFragment());
                     Toast.makeText(getApplicationContext(),"Search page",Toast.LENGTH_SHORT).show();
                     break;
 
@@ -69,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
             return  true;
         });
     }
+
+    /*@Override
+    public boolean onSupportNavigateUp() {
+        return navController.navigateUp() || super.onSupportNavigateUp();
+    }*/
+
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -89,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.nav_logout:
                 Toast.makeText(this,"Logging out",Toast.LENGTH_SHORT).show();
+                //Facebook
+                FirebaseAuth.getInstance().signOut();
                 googlesignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

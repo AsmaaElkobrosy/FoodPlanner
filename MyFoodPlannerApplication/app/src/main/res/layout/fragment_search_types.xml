@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".SearchTypesFragment"
     android:background="@drawable/new_background">
 
-
-    <CheckBox
-        android:id="@+id/area_checkBox"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/area"
-        android:textColor="@color/black_new"
-        android:textSize="20sp"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/searchBy_tv"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="@+id/searchBy_tv"
-        app:layout_constraintTop_toBottomOf="@+id/searchBy_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBy_tv">
 
-    <CheckBox
-        android:id="@+id/category_checkBox"
-        android:layout_width="116dp"
-        android:layout_height="51dp"
-        android:text="@string/category"
-        android:textColor="@color/black_new"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ingredient_checkBox"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintStart_toEndOf="@+id/ingredient_checkBox"
-        app:layout_constraintTop_toTopOf="@+id/ingredient_checkBox" />
+        <RadioButton
+            android:id="@+id/ingredient_checkBox"
+            android:layout_width="135dp"
+            android:layout_height="50dp"
+            android:text="@string/ingredients"
+            android:textColor="@color/black_new"
+            android:textSize="20sp" />
 
-    <CheckBox
-        android:id="@+id/ingredient_checkBox"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
-        android:text="@string/ingredients"
-        android:textColor="@color/black_new"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/area_checkBox"
-        app:layout_constraintStart_toEndOf="@+id/area_checkBox"
-        app:layout_constraintTop_toTopOf="@+id/area_checkBox" />
+        <RadioButton
+            android:id="@+id/category_checkBox"
+            android:layout_width="116dp"
+            android:layout_height="51dp"
+            android:text="@string/category"
+            android:textColor="@color/black_new"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/area_checkBox"
+            android:layout_width="116dp"
+            android:layout_height="51dp"
+            android:text="@string/area"
+            android:textColor="@color/black_new"
+            android:textSize="20sp" />
+    </RadioGroup>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
@@ -86,43 +88,43 @@
         android:id="@+id/egyptBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/egypt_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Egyptian"
         android:elevation="40dp"
         android:visibility="invisible"
         app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/area_checkBox"
-        app:layout_constraintStart_toStartOf="@+id/area_checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/area_checkBox" />
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
     <ImageButton
         android:id="@+id/tunsiaBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/tunisia"
-        android:contentDescription="flag"
+        android:contentDescription="Tunisian"
         android:elevation="40dp"
-        app:cornerRadius="50dp"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/ingredient_checkBox"
-        app:layout_constraintStart_toEndOf="@+id/area_checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/ingredient_checkBox" />
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/turkeyBtn"
+        app:layout_constraintStart_toEndOf="@+id/egyptBtn"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
     <ImageButton
         android:id="@+id/turkeyBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:elevation="40dp"
-        app:cornerRadius="50dp"
-        android:visibility="invisible"
-        android:contentDescription="flag"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/flag_of_turkey"
-        app:layout_constraintEnd_toEndOf="@+id/category_checkBox"
-        app:layout_constraintStart_toStartOf="@+id/category_checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/category_checkBox" />
+        android:contentDescription="Turkish"
+        android:elevation="40dp"
+        android:visibility="invisible"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
     <ImageButton
         android:id="@+id/americaBtn"
@@ -130,7 +132,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/american_flag"
-        android:contentDescription="flag"
+        android:contentDescription="American"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -146,7 +148,7 @@
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
-        android:contentDescription="flag"
+        android:contentDescription="Vietnamese"
         android:background="@drawable/vietnam_flag"
         app:layout_constraintEnd_toEndOf="@+id/egyptBtn"
         app:layout_constraintStart_toStartOf="@+id/egyptBtn"
@@ -160,7 +162,7 @@
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
-        android:contentDescription="flag"
+        android:contentDescription="Spanish"
         android:background="@drawable/spain_flag"
         app:layout_constraintEnd_toEndOf="@+id/vietnamBtn"
         app:layout_constraintStart_toStartOf="@+id/vietnamBtn"
@@ -174,7 +176,7 @@
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
-        android:contentDescription="flag"
+        android:contentDescription="Russian"
         android:background="@drawable/russian_flag"
         app:layout_constraintEnd_toEndOf="@+id/spainBtn"
         app:layout_constraintStart_toStartOf="@+id/spainBtn"
@@ -187,7 +189,7 @@
         android:layout_marginTop="10dp"
         android:visibility="invisible"
         android:background="@drawable/polish_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Polish"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="@+id/moroccoBtn"
@@ -200,7 +202,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/morocco_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Morrocan"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -215,7 +217,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/mexico_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Mexican"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -230,7 +232,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/italian_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Italian"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -245,7 +247,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/japanese_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Japanese"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -259,7 +261,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/dutch_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Dutch"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -273,7 +275,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/french_flag"
-        android:contentDescription="flag"
+        android:contentDescription="French"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -287,7 +289,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/greek_flag"
-        android:contentDescription="flag"
+        android:contentDescription="Greek"
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
@@ -304,7 +306,7 @@
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
-        android:contentDescription="flag"
+        android:contentDescription="Indian"
         android:background="@drawable/indian_flag"
         app:layout_constraintEnd_toEndOf="@+id/greekBtn"
         app:layout_constraintStart_toStartOf="@+id/greekBtn"
@@ -318,7 +320,7 @@
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
-        android:contentDescription="flag"
+        android:contentDescription="British"
         android:background="@drawable/british_flag"
         app:layout_constraintEnd_toEndOf="@id/japanBtn"
         app:layout_constraintStart_toStartOf="@id/japanBtn"
@@ -332,10 +334,178 @@
         android:elevation="40dp"
         app:cornerRadius="50dp"
         android:visibility="invisible"
-        android:contentDescription="flag"
+        android:contentDescription="Irish"
         android:background="@drawable/flag_irish"
         app:layout_constraintEnd_toEndOf="@id/indianBtn"
         app:layout_constraintStart_toStartOf="@id/indianBtn"
         app:layout_constraintTop_toBottomOf="@id/indianBtn" />
+
+    <ImageButton
+        android:id="@+id/breakfastBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/breakfast"
+        android:contentDescription="Breakfast"
+        android:elevation="40dp"
+        android:visibility="invisible"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+    <ImageButton
+        android:id="@+id/chickenBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/chicken"
+        android:contentDescription="Chicken"
+        android:elevation="40dp"
+        android:visibility="invisible"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/turkeyBtn"
+        app:layout_constraintStart_toEndOf="@+id/egyptBtn"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+    <ImageButton
+        android:id="@+id/meatBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/meat"
+        android:contentDescription="Beef"
+        android:elevation="40dp"
+        android:visibility="invisible"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+    <ImageButton
+        android:id="@+id/dessertBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dessert"
+        android:contentDescription="Dessert"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/chickenBtn"
+        app:layout_constraintStart_toStartOf="@+id/chickenBtn"
+        app:layout_constraintTop_toBottomOf="@+id/chickenBtn" />
+
+    <ImageButton
+        android:id="@+id/goatBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Goat"
+        android:background="@drawable/goat"
+        app:layout_constraintEnd_toEndOf="@+id/meatBtn"
+        app:layout_constraintStart_toStartOf="@+id/meatBtn"
+        app:layout_constraintTop_toBottomOf="@+id/meatBtn" />
+
+    <ImageButton
+        android:id="@+id/lambBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Lamb"
+        android:background="@drawable/lamb"
+        app:layout_constraintEnd_toEndOf="@+id/breakfastBtn"
+        app:layout_constraintStart_toStartOf="@+id/breakfastBtn"
+        app:layout_constraintTop_toBottomOf="@+id/breakfastBtn" />
+
+    <ImageButton
+        android:id="@+id/pastaBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Pasta"
+        android:background="@drawable/pasta"
+        app:layout_constraintEnd_toEndOf="@+id/lambBtn"
+        app:layout_constraintStart_toStartOf="@+id/lambBtn"
+        app:layout_constraintTop_toBottomOf="@+id/lambBtn" />
+
+    <ImageButton
+        android:id="@+id/seafoodBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Seafood"
+        android:background="@drawable/seafood"
+        app:layout_constraintEnd_toEndOf="@id/goatBtn"
+        app:layout_constraintStart_toStartOf="@id/goatBtn"
+        app:layout_constraintTop_toBottomOf="@id/goatBtn" />
+
+    <ImageButton
+        android:id="@+id/sideBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Side"
+        android:background="@drawable/side"
+        app:layout_constraintEnd_toEndOf="@id/dessertBtn"
+        app:layout_constraintStart_toStartOf="@id/dessertBtn"
+        app:layout_constraintTop_toBottomOf="@id/dessertBtn" />
+
+    <ImageButton
+        android:id="@+id/starterBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Starter"
+        android:background="@drawable/starter"
+        app:layout_constraintEnd_toEndOf="@+id/pastaBtn"
+        app:layout_constraintStart_toStartOf="@+id/pastaBtn"
+        app:layout_constraintTop_toBottomOf="@+id/pastaBtn" />
+
+    <ImageButton
+        android:id="@+id/veganBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Vegan"
+        android:background="@drawable/vegan"
+        app:layout_constraintEnd_toEndOf="@id/goatBtn"
+        app:layout_constraintStart_toStartOf="@id/goatBtn"
+        app:layout_constraintTop_toBottomOf="@id/goatBtn" />
+
+    <ImageButton
+        android:id="@+id/vegiterianBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Vegetarian"
+        android:background="@drawable/vegiterian"
+        app:layout_constraintEnd_toEndOf="@id/sideBtn"
+        app:layout_constraintStart_toStartOf="@id/sideBtn"
+        app:layout_constraintTop_toBottomOf="@id/sideBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

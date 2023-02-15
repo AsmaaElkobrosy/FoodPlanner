@@ -29,6 +29,7 @@ public class LogInFragment extends Fragment {
     private EditText loginEmail,loginPass;
     private TextView signupRedirectTeXT;
     private Button loginpbutton;
+    private Button guest;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,11 +40,19 @@ public class LogInFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        guest= view.findViewById(R.id.guestBtn);
         auth = FirebaseAuth.getInstance();
         loginEmail = view.findViewById(R.id.login_email);
         loginPass = view.findViewById(R.id.login_pw);
         loginpbutton = view.findViewById(R.id.Loginbtn);
         signupRedirectTeXT = view.findViewById(R.id.signupredirecttext);
+
+        guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),MainActivity.class));
+            }
+        });
 
         loginpbutton.setOnClickListener(new View.OnClickListener() {
             @Override

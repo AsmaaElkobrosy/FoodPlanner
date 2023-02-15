@@ -45,7 +45,7 @@
         android:id="@+id/cancel_icon"
         android:layout_width="69dp"
         android:layout_height="56dp"
-        android:src="@drawable/cancel_icon"
+        android:src="@drawable/fork_and_knife_meal_2_svgrepo_com"
         app:layout_constraintBottom_toTopOf="@+id/videoView"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/videoView"
