@@ -25,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding mainBinding;
     GoogleSignInOptions googlesignInOptions;
     GoogleSignInClient googlesignInClient;
+
+    HomeFragment homeFragment= new HomeFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
-        replaceFragment(new HomeFragment());
+        //replaceFragment(new HomeFragment());
+        //homeFragment= findViewById(R.id.homeFragment);
 
         googlesignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googlesignInClient = GoogleSignIn.getClient(this,googlesignInOptions);
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
 
                 case R.id.nav_home:
-                    replaceFragment(new HomeFragment());
+                    replaceFragment(homeFragment);
                     Toast.makeText(getApplicationContext(),"Home page",Toast.LENGTH_SHORT).show();
 
                     break;
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Your Weekly Plan",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.nav_search:
-                    replaceFragment(new SearchFragment());
+                    replaceFragment(new SearchTypesFragment());
                     Toast.makeText(getApplicationContext(),"Search page",Toast.LENGTH_SHORT).show();
                     break;
 

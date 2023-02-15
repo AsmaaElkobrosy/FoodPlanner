@@ -17,4 +17,5 @@ public class ResultModel {
     public void setMeals(ArrayList<MealFullDetailes> meals) {
         this.meals = meals;
     }
+
 }

@@ -1,63 +1,113 @@
 package com.example.myfoodplannerapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FilterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FilterFragment extends Fragment {
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.StringTokenizer;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Retrofit;
 
-    public FilterFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FilterFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FilterFragment newInstance(String param1, String param2) {
-        FilterFragment fragment = new FilterFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+public class FilterFragment extends Fragment implements OnMealClickListener{
+    String  filterBy, type;
+    Observable<ResultModel> result;
+    searchAdapter search_adapter;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    View v;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+
         return inflater.inflate(R.layout.fragment_filter, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        search_adapter= new searchAdapter(new ArrayList<>(), getContext(), this::onClick);
+        recyclerView= view.findViewById(R.id.filter_recyclerView);
+
+
+        Bundle bundle = this.getArguments();
+
+        if(bundle != null){
+            filterBy= bundle.getString("filterBy");
+            type= bundle.getString("type");
+        }
+
+        Retrofit client= Api_Client.getApiClient();
+        Api_Service api= client.create(Api_Service.class);
+
+        switch (filterBy){
+            case "Area":
+            case "Category":
+            case "Ingredient":
+                result = api.getByIngredients(type);
+                break;
+            default:
+        }
+
+
+        layoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(search_adapter);
+        result.subscribeOn(Schedulers.io())
+                .map(ResultModel :: getMeals)
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                        item -> {
+                            for(MealFullDetailes meal : item){
+                                Log.i("TAG", "Observable result" + meal.getStrMeal());
+                            }
+                            search_adapter.setList(item);
+                            search_adapter.notifyDataSetChanged();
+                        },
+                        error -> Log.i("TAG", "On Observable: " + error.getMessage())
+                );
+    }
+
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onClick(MealFullDetailes meal) {
+        Bundle bundle = new Bundle();
+       // System.out.println(resultModel.getMeals().get(position));
+        bundle.putString("mealid",meal.getIdMeal());
+        Fragment fragment = new OneMealFragment();
+        fragment.setArguments(bundle);
+        replaceFragment(fragment);
     }
 }

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/new_background"
+    android:background="@drawable/splash"
     tools:context=".SplashActivity">
 
     <view
         android:id="@+id/view"
         class="com.airbnb.lottie.LottieAnimationView"
-        android:layout_width="390dp"
-        android:layout_height="338dp"
+        android:layout_width="403dp"
+        android:layout_height="356dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -27,11 +27,12 @@
         style="@style/Widget.AppCompat.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="108dp"
         android:fontFamily="cursive"
         android:text="My Food Planner"
-        android:textColor="@color/black_new"
-        android:textSize="48sp"
+        android:textColor="@color/orange"
+        android:textSize="55sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view" />
