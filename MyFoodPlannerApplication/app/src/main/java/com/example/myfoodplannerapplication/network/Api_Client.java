@@ -1,4 +1,4 @@
-package com.example.myfoodplannerapplication;
+package com.example.myfoodplannerapplication.network;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -7,8 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Api_Client {
 
     private static Retrofit retrofit;
-    public static final String base_Url= "https://www.themealdb.com"; //"https://rb.gy"; //"https://www.themealdb.com/api/json/v1/1/";
-    private static Api_Client client;
+    public static final String base_Url= "https://www.themealdb.com";
 
     public static Retrofit getApiClient(){
         if(retrofit == null){

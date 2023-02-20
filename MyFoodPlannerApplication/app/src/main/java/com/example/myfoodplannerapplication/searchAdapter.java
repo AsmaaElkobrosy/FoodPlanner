@@ -68,6 +68,12 @@ public class searchAdapter extends RecyclerView.Adapter<searchAdapter.MyViewHold
         holder.meal_title.setText(meal.getStrMeal());
         Glide.with(context).load(meal.getStrMealThumb()).apply(new RequestOptions()
                 .override(150,150)).into(holder.image);
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(meal);
+            }
+        });
     }
 
     @Override

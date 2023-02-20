@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,129 +7,122 @@
     android:background="@color/grey"
     tools:context=".OneMealFragment">
 
-    <ImageView
-        android:id="@+id/mealimg"
-        android:layout_width="367dp"
-        android:layout_height="162dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="406dp"
-        android:layout_height="405dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="1dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mealimg">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/mealimg"
+            android:layout_width="366dp"
+            android:layout_height="179dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+        <TextView
+            android:id="@+id/txtname"
+            android:layout_width="254dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="27dp"
+            android:layout_weight="@dimen/one"
+            android:fontFamily="cursive"
+            android:lines="3"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtoriginC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.445"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mealimg" />
+
+        <TextView
+            android:id="@+id/txtoriginC"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="@dimen/nine">
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="27dp"
+            android:layout_weight="@dimen/one"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/one"
-                android:text="          Name:" />
+        <Button
+            android:id="@+id/Playbtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="@dimen/one"
+            android:background="@drawable/circle_icon"
+            android:text=" "
+            android:textColor="@color/orange"
+            app:layout_constraintBottom_toBottomOf="@+id/mealimg"
+            app:layout_constraintStart_toStartOf="@+id/mealimg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/one"
-                android:text="          Origin Country:" />
+        <ImageView
+            android:id="@+id/starimg"
+            android:layout_width="49dp"
+            android:layout_height="51dp"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mealimg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mealimg"
+            app:layout_constraintVertical_bias="0.44"
+            app:srcCompat="@drawable/startofavicon" />
+        <Button
+            android:id="@+id/addtoplan_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/calendar_icon"
+            android:backgroundTint="@color/orange"
+            android:text=" "
+            android:textColor="@color/black_new"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.925"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/three"
-                android:text="          Ingredients:" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="56dp"
+            android:layout_height="62dp"
+            android:gravity="center|top"
+            android:text="Add To Plan"
+            android:textColor="@color/black_new"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/addtoplan_btn"
+            app:layout_constraintStart_toStartOf="@+id/addtoplan_btn"
+            app:layout_constraintTop_toBottomOf="@+id/addtoplan_btn" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/three"
-                android:text="          Steps:" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/one"
-                android:text="          Video:" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="@dimen/nine">
-
-            <TextView
-                android:id="@+id/txtname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/one" />
-
-            <TextView
-                android:id="@+id/txtoriginC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/one" />
-
-            <TextView
-                android:id="@+id/txtingredients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/three" />
-
-            <TextView
-                android:id="@+id/txtsteps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="@dimen/three" />
-
-
-            <Button
-                android:id="@+id/Playbtn"
-                android:layout_width="match_parent"
-                android:layout_height="22dp"
-                android:layout_weight="@dimen/one"
-                android:text="@string/play" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="56dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center|top"
+            android:text="Play Video"
+            android:textColor="@color/black_new"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/Playbtn"
+            app:layout_constraintStart_toStartOf="@+id/Playbtn"
+            app:layout_constraintTop_toBottomOf="@+id/Playbtn" />
 
 
-        </LinearLayout>
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="49dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mealimg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mealimg"
-        app:layout_constraintVertical_bias="0.525"
-        app:srcCompat="@drawable/startofavicon" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

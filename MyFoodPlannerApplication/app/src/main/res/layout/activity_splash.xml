@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/new_background"
+    android:background="@drawable/splash"
     tools:context=".SplashActivity">
 
     <view
@@ -27,11 +27,11 @@
         style="@style/Widget.AppCompat.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         android:fontFamily="cursive"
         android:text="My Food Planner"
-        android:textColor="@color/black_new"
-        android:textSize="48sp"
+        android:textColor="@color/orange"
+        android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view" />

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    tools:context=".plan.view.DailyPlanFragment"
     android:background="@color/grey">
 
     <LinearLayout
@@ -61,6 +61,7 @@
         android:textSize="30sp"/>
 
     <Button
+        android:id="@+id/btnaddmeal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Meal"

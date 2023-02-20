@@ -23,12 +23,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogInFragment extends Fragment {
     private FirebaseAuth auth;
     private EditText loginEmail,loginPass;
     private TextView signupRedirectTeXT;
     private Button loginpbutton;
+
+    private FirebaseAuth firebaseAuth;
     private Button guest;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,10 +50,27 @@ public class LogInFragment extends Fragment {
         loginpbutton = view.findViewById(R.id.Loginbtn);
         signupRedirectTeXT = view.findViewById(R.id.signupredirecttext);
 
+        //anonymous
+        firebaseAuth = FirebaseAuth.getInstance();
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),MainActivity.class));
+
+                anonymousAuth();
+            }
+
+            private void anonymousAuth() {
+                firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            FirebaseUser user= firebaseAuth.getCurrentUser();
+                            startActivity(new Intent(getActivity(),MainActivity.class));
+                        }else {
+                            Toast.makeText(getContext(),"Can not complete", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 
@@ -61,30 +81,29 @@ public class LogInFragment extends Fragment {
                 String pass = loginPass.getText().toString();
 
                 if (!email.isEmpty()&& Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-
-                if (!pass.isEmpty()){
-                   auth.signInWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                       @Override
-                       public void onSuccess(AuthResult authResult) {
-                           Toast.makeText(getContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(getActivity(),MainActivity.class));
-                          getActivity().finish();
-                       }
-                   }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(getContext(),"Login Failed",Toast.LENGTH_SHORT).show();
-                       }
-                   });
-                }else if (pass.isEmpty()){
-                   loginPass.setError("Password can not be empty");
-                }else if (email.isEmpty()){
+                    if (!pass.isEmpty()){
+                        auth.signInWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                Toast.makeText(getContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getActivity(),MainActivity.class));
+                                //getActivity().finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(),"Login Failed",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }else if (pass.isEmpty()){
+                        loginPass.setError("Password can not be empty");
+                    }else if (email.isEmpty()){
                         loginEmail.setError("Email can not be empty");
                     }else{
                         loginEmail.setError("Please enter a valid email");
                     }
+                }
             }
-        }
         });
         signupRedirectTeXT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,5 +111,6 @@ public class LogInFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_signUpFragment);
             }
         });
+
     }
 }

@@ -508,4 +508,260 @@
         app:layout_constraintStart_toStartOf="@id/sideBtn"
         app:layout_constraintTop_toBottomOf="@id/sideBtn" />
 
+    <ImageButton
+        android:id="@+id/chickenBtn_I"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/chicken"
+        android:contentDescription="Chicken"
+        android:elevation="40dp"
+        android:visibility="invisible"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+    <ImageButton
+        android:id="@+id/meatBtn_I"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/meat"
+        android:contentDescription="Beef"
+        android:elevation="40dp"
+        android:visibility="invisible"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/turkeyBtn"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/egyptBtn"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+    <!--ImageButton
+        android:id="@+id/salmonBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/salmon"
+        android:contentDescription="Salmon"
+        android:elevation="40dp"
+        android:visibility="invisible"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+
+    <ImageButton
+        android:id="@+id/cheeseBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cheese"
+        android:contentDescription="Cheese"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/turkeyBtn"
+        app:layout_constraintStart_toStartOf="@+id/turkeyBtn"
+        app:layout_constraintTop_toBottomOf="@+id/turkeyBtn" />
+
+    <ImageButton
+        android:id="@+id/eggBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Egg"
+        android:background="@drawable/egg"
+        app:layout_constraintEnd_toEndOf="@+id/egyptBtn"
+        app:layout_constraintStart_toStartOf="@+id/egyptBtn"
+        app:layout_constraintTop_toBottomOf="@+id/egyptBtn" />
+
+    <ImageButton
+        android:id="@+id/orangeBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Orange"
+        android:background="@drawable/orange"
+        app:layout_constraintEnd_toEndOf="@+id/vietnamBtn"
+        app:layout_constraintStart_toStartOf="@+id/vietnamBtn"
+        app:layout_constraintTop_toBottomOf="@+id/vietnamBtn" />
+
+    <ImageButton
+        android:id="@+id/milkBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="ingredients"
+        android:background="@drawable/milk"
+        app:layout_constraintEnd_toEndOf="@+id/spainBtn"
+        app:layout_constraintStart_toStartOf="@+id/spainBtn"
+        app:layout_constraintTop_toBottomOf="@+id/spainBtn" />
+
+    <ImageButton
+        android:id="@+id/flourBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        android:background="@drawable/flour"
+        android:contentDescription="ingredients"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/moroccoBtn"
+        app:layout_constraintStart_toStartOf="@+id/moroccoBtn"
+        app:layout_constraintTop_toBottomOf="@+id/moroccoBtn" />
+
+    <ImageButton
+        android:id="@+id/lemonBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lemon"
+        android:contentDescription="Lemon"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/mexicoBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/mexicoBtn"
+        app:layout_constraintTop_toBottomOf="@+id/mexicoBtn" />
+
+    <ImageButton
+        android:id="@+id/riceBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rice"
+        android:contentDescription="rice"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/italiaBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/italiaBtn"
+        app:layout_constraintTop_toBottomOf="@+id/italiaBtn" />
+
+    <ImageButton
+        android:id="@+id/pastaIngBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/pasta_ing"
+        android:contentDescription="Mediterranean Pasta"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/americaBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/americaBtn"
+        app:layout_constraintTop_toBottomOf="@+id/americaBtn" />
+
+    <ImageButton
+        android:id="@+id/onionBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/onion"
+        android:contentDescription="Onion"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@id/russianBtn"
+        app:layout_constraintStart_toStartOf="@id/russianBtn"
+        app:layout_constraintTop_toBottomOf="@id/russianBtn" />
+
+    <ImageButton
+        android:id="@+id/garlicBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/garlic"
+        android:contentDescription="Garlic"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/tunsiaBtn"
+        app:layout_constraintStart_toStartOf="@+id/tunsiaBtn"
+        app:layout_constraintTop_toBottomOf="@+id/tunsiaBtn"/>
+
+    <ImageButton
+        android:id="@+id/potatostBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/potatos"
+        android:contentDescription="Potatoes"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/dutchBtn"
+        app:layout_constraintStart_toStartOf="@+id/dutchBtn"
+        app:layout_constraintTop_toBottomOf="@+id/dutchBtn" />
+    <ImageButton
+        android:id="@+id/oatBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/oat"
+        android:contentDescription="ingredients"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/tunsiaBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/frenchBtn"
+        app:layout_constraintTop_toBottomOf="@+id/frenchBtn" />
+
+    <ImageButton
+        android:id="@+id/chiliesBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Chilli"
+        android:background="@drawable/chilies"
+        app:layout_constraintEnd_toEndOf="@+id/greekBtn"
+        app:layout_constraintStart_toStartOf="@+id/greekBtn"
+        app:layout_constraintTop_toBottomOf="@+id/greekBtn" />
+
+    <ImageButton
+        android:id="@+id/cucumberBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Cucumber"
+        android:background="@drawable/cucumber"
+        app:layout_constraintEnd_toEndOf="@id/japanBtn"
+        app:layout_constraintStart_toStartOf="@id/japanBtn"
+        app:layout_constraintTop_toBottomOf="@id/japanBtn" />
+
+    <ImageButton
+        android:id="@+id/avocadobtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:elevation="40dp"
+        app:cornerRadius="50dp"
+        android:visibility="invisible"
+        android:contentDescription="Avocado"
+        android:background="@drawable/avocado"
+        app:layout_constraintEnd_toEndOf="@id/indianBtn"
+        app:layout_constraintStart_toStartOf="@id/indianBtn"
+        app:layout_constraintTop_toBottomOf="@id/indianBtn" /-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

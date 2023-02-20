@@ -5,18 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SearchTypesFragment extends Fragment {
@@ -27,7 +23,8 @@ public class SearchTypesFragment extends Fragment {
     ImageButton egypt, america, british, dutch, french, greek, india, italia, irish, turkey, tunsia, japan, mexico, morocco, polish,
             russian, spain, vietnam;
     ImageButton breakfast, chicken, dessert, goat, lamb, meat, pasta, seafood, side, starter, vegan, vegiterian;
-    RadioGroup radioGroup;
+    ImageButton chicken_I,meat_I,salmon,cheese,Egg,orange,milk,flour,lemon,rice,pastaIngBtn,onion,
+            garlic,potatoes,oat,chilies,cucumber,avocado;
     RadioButton area;
     RadioButton category;
     RadioButton ingredientRB;
@@ -71,6 +68,25 @@ public class SearchTypesFragment extends Fragment {
         categories.add(goat); categories.add(lamb); categories.add(meat);
         categories.add(pasta); categories.add(seafood); categories.add(side);
         categories.add(starter); categories.add(vegan); categories.add(vegiterian);
+
+        chicken_I = view.findViewById(R.id.chickenBtn_I); ingredients.add(chicken_I);
+        meat_I = view.findViewById(R.id.meatBtn_I); ingredients.add(meat_I);
+        /*oat = view.findViewById(R.id.oatBtn); ingredients.add(oat);
+        onion = view.findViewById(R.id.onionBtn); ingredients.add(onion);
+        pastaIngBtn = view.findViewById(R.id.pastaIngBtn); ingredients.add(pastaIngBtn);
+        cheese = view.findViewById(R.id.cheeseBtn); ingredients.add(cheese);
+        salmon = view.findViewById(R.id.salmonBtn); ingredients.add(salmon);
+        chilies = view.findViewById(R.id.chiliesBtn); ingredients.add(chilies);
+        cucumber = view.findViewById(R.id.cucumberBtn); ingredients.add(cucumber);
+        Egg = view.findViewById(R.id.eggBtn); ingredients.add(Egg);
+        orange = view.findViewById(R.id.orangeBtn); ingredients.add(orange);
+        rice = view.findViewById(R.id.riceBtn); ingredients.add(rice);
+        lemon = view.findViewById(R.id.lemonBtn); ingredients.add(lemon);
+        flour = view.findViewById(R.id.flourBtn); ingredients.add(flour);
+        potatoes = view.findViewById(R.id.potatostBtn); ingredients.add(potatoes);
+        milk = view.findViewById(R.id.milkBtn); ingredients.add(milk);
+        garlic = view.findViewById(R.id.garlicBtn); ingredients.add(garlic);
+        avocado = view.findViewById(R.id.avocadobtn); ingredients.add(avocado);*/
 
         //RadioGroup radioGroup= (RadioGroup) view.findViewById(R.id.radioGroup);
         //String filterBy = ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
@@ -601,5 +617,249 @@ public class SearchTypesFragment extends Fragment {
                         .commit();
             }
         });
+
+        chicken_I.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",chicken.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        meat_I.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",meat.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        /*salmon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",salmon.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        Egg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",Egg.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        garlic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",garlic.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        cheese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",cheese.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        orange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",orange.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        potatoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",potatoes.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        pastaIngBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",pastaIngBtn.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+
+        chilies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",chilies.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        rice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",rice.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+
+        onion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",onion.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+
+
+        lemon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",lemon.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+
+        avocado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",avocado.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });
+        cucumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("filterBy","Ingredient");
+                bundle.putString("type",cucumber.getContentDescription().toString());
+
+                FilterFragment filterFragment = new FilterFragment();
+                filterFragment.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, filterFragment)
+                        .commit();
+            }
+        });*/
     }
 }
