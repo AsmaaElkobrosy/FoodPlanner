@@ -537,7 +537,7 @@
         app:layout_constraintStart_toEndOf="@+id/egyptBtn"
         app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
-    <!--ImageButton
+    <ImageButton
         android:id="@+id/salmonBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -762,6 +762,6 @@
         android:background="@drawable/avocado"
         app:layout_constraintEnd_toEndOf="@id/indianBtn"
         app:layout_constraintStart_toStartOf="@id/indianBtn"
-        app:layout_constraintTop_toBottomOf="@id/indianBtn" /-->
+        app:layout_constraintTop_toBottomOf="@id/indianBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

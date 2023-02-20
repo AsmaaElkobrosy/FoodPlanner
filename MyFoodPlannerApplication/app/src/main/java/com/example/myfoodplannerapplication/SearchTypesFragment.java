@@ -71,7 +71,7 @@ public class SearchTypesFragment extends Fragment {
 
         chicken_I = view.findViewById(R.id.chickenBtn_I); ingredients.add(chicken_I);
         meat_I = view.findViewById(R.id.meatBtn_I); ingredients.add(meat_I);
-        /*oat = view.findViewById(R.id.oatBtn); ingredients.add(oat);
+        oat = view.findViewById(R.id.oatBtn); ingredients.add(oat);
         onion = view.findViewById(R.id.onionBtn); ingredients.add(onion);
         pastaIngBtn = view.findViewById(R.id.pastaIngBtn); ingredients.add(pastaIngBtn);
         cheese = view.findViewById(R.id.cheeseBtn); ingredients.add(cheese);
@@ -86,7 +86,7 @@ public class SearchTypesFragment extends Fragment {
         potatoes = view.findViewById(R.id.potatostBtn); ingredients.add(potatoes);
         milk = view.findViewById(R.id.milkBtn); ingredients.add(milk);
         garlic = view.findViewById(R.id.garlicBtn); ingredients.add(garlic);
-        avocado = view.findViewById(R.id.avocadobtn); ingredients.add(avocado);*/
+        avocado = view.findViewById(R.id.avocadobtn); ingredients.add(avocado);
 
         //RadioGroup radioGroup= (RadioGroup) view.findViewById(R.id.radioGroup);
         //String filterBy = ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
@@ -152,6 +152,7 @@ public class SearchTypesFragment extends Fragment {
                         .commit();
             }
         });
+
         america.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -650,7 +651,8 @@ public class SearchTypesFragment extends Fragment {
                         .commit();
             }
         });
-        /*salmon.setOnClickListener(new View.OnClickListener() {
+
+        salmon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -707,6 +709,7 @@ public class SearchTypesFragment extends Fragment {
 
                 FilterFragment filterFragment = new FilterFragment();
                 filterFragment.setArguments(bundle);
+
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, filterFragment)
@@ -804,6 +807,7 @@ public class SearchTypesFragment extends Fragment {
 
                 FilterFragment filterFragment = new FilterFragment();
                 filterFragment.setArguments(bundle);
+
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, filterFragment)
@@ -860,6 +864,6 @@ public class SearchTypesFragment extends Fragment {
                         .replace(R.id.nav_host_fragment, filterFragment)
                         .commit();
             }
-        });*/
+        });
     }
 }
