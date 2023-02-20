@@ -1,29 +1,141 @@
 package com.example.myfoodplannerapplication;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 
+@Entity(tableName= "Meals")
 public class MealFullDetailes {
 
-    ArrayList<String> ingredients= new ArrayList<>();
+
+    @PrimaryKey
+    @NonNull
     String idMeal;
-    String strMeal;
-    String strCategory;
-    String strArea;
-    String strInstructions;
+    @Ignore
+    ArrayList<String> ingredients= new ArrayList<>();
+    public String strMeal;
+
+    public String strCategory;
+    public String strArea;
+    public String strInstructions;
     String strMealThumb;
     String strYoutube;
     String strIngredient1;
     String strIngredient2;
     String strIngredient3;
     String strIngredient4;
-
-
-
     String strIngredient5;
     String strIngredient6;
     String strIngredient7;
     String strIngredient8;
+    String strIngredient9;
+    String strIngredient10;
+    String strIngredient11;
+    String strIngredient12;
+    String strIngredient13;
+    /*String strMeasure1;
+    String strMeasure2;
+    String strMeasure3;
+    String strMeasure4;
+    String strMeasure5;
+    String strMeasure6;
+    String strMeasure7;
+    String strMeasure8;
+    String strMeasure9;
+    String strMeasure10;
+    String strMeasure11;
+    String strMeasure12;
+    String strMeasure13;*/
 
+    @Ignore
+    ArrayList<String> measures= new ArrayList<>();
+
+    public MealFullDetailes() {}
+
+    public MealFullDetailes(String idMeal, String strMeal, String strCategory, String strArea, String strInstructions, String strMealThumb, String strYoutube) {
+        this.idMeal = idMeal;
+        this.strMeal = strMeal;
+        this.strCategory = strCategory;
+        this.strArea = strArea;
+        this.strInstructions = strInstructions;
+        this.strMealThumb = strMealThumb;
+        this.strYoutube = strYoutube;
+    }
+
+    public ArrayList<String> getIngredients(){
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredient){
+        ingredients.add(ingredient);
+    }
+
+    public ArrayList<String> getMeasures(){
+        return measures;
+    }
+
+    public void setMeasures(String measure){
+        ingredients.add(measure);
+    }
+
+    public String getIdMeal() {
+        return idMeal;
+    }
+
+    public void setIdMeal(String idMeal) {
+        this.idMeal = idMeal;
+    }
+
+    public String getStrMeal() {
+        return strMeal;
+    }
+
+    public void setStrMeal(String strMeal) {
+        this.strMeal = strMeal;
+    }
+
+    public String getStrCategory() {
+        return strCategory;
+    }
+
+    public void setStrCategory(String strCategory) {
+        this.strCategory = strCategory;
+    }
+
+    public String getStrArea() {
+        return strArea;
+    }
+
+    public void setStrArea(String strArea) {
+        this.strArea = strArea;
+    }
+
+    public String getStrInstructions() {
+        return strInstructions;
+    }
+
+    public void setStrInstructions(String strInstructions) {
+        this.strInstructions = strInstructions;
+    }
+
+    public String getStrMealThumb() {
+        return strMealThumb;
+    }
+
+    public void setStrMealThumb(String strMealThumb) {
+        this.strMealThumb = strMealThumb;
+    }
+
+    public String getStrYoutube() {
+        return strYoutube;
+    }
+
+    public void setStrYoutube(String strYoutube) {
+        this.strYoutube = strYoutube;
+    }
     public String getStrIngredient1() {
         return strIngredient1;
     }
@@ -122,107 +234,6 @@ public class MealFullDetailes {
     }
     public void setStrIngredient1(String strIngredient1) {
         this.strIngredient1 = strIngredient1;
-    }
-
-    String strIngredient9;
-    String strIngredient10;
-    String strIngredient11;
-    String strIngredient12;
-    String strIngredient13;
-    String strMeasure1;
-    String strMeasure2;
-    String strMeasure3;
-    String strMeasure4;
-    String strMeasure5;
-    String strMeasure6;
-    String strMeasure7;
-    String strMeasure8;
-    String strMeasure9;
-    String strMeasure10;
-    String strMeasure11;
-    String strMeasure12;
-    String strMeasure13;
-    ArrayList<String> measures= new ArrayList<>();
-
-    public MealFullDetailes(String idMeal, String strMeal, String strCategory, String strArea, String strInstructions, String strMealThumb, String strYoutube) {
-        this.idMeal = idMeal;
-        this.strMeal = strMeal;
-        this.strCategory = strCategory;
-        this.strArea = strArea;
-        this.strInstructions = strInstructions;
-        this.strMealThumb = strMealThumb;
-        this.strYoutube = strYoutube;
-    }
-
-    public ArrayList<String> getIngredients(){
-        return ingredients;
-    }
-
-    public  ArrayList<String> setIngredients(){    ingredients.add(getStrIngredient1());    ingredients.add(strIngredient2);    ingredients.add(strIngredient3);    ingredients.add(strIngredient4);    ingredients.add(strIngredient5);    ingredients.add(strIngredient6);    ingredients.add(strIngredient7);    ingredients.add(strIngredient8);    ingredients.add(strIngredient9);    ingredients.add(strIngredient10);    ingredients.add(strIngredient11);
-        ingredients.add(strIngredient12);    ingredients.add(strIngredient13);    return ingredients;}
-
-    public ArrayList<String> getMeasures(){
-        return measures;
-    }
-
-    public void setMeasures(String measure){
-        ingredients.add(measure);
-    }
-
-    public String getIdMeal() {
-        return idMeal;
-    }
-
-    public void setIdMeal(String idMeal) {
-        this.idMeal = idMeal;
-    }
-
-    public String getStrMeal() {
-        return strMeal;
-    }
-
-    public void setStrMeal(String strMeal) {
-        this.strMeal = strMeal;
-    }
-
-    public String getStrCategory() {
-        return strCategory;
-    }
-
-    public void setStrCategory(String strCategory) {
-        this.strCategory = strCategory;
-    }
-
-    public String getStrArea() {
-        return strArea;
-    }
-
-    public void setStrArea(String strArea) {
-        this.strArea = strArea;
-    }
-
-    public String getStrInstructions() {
-        return strInstructions;
-    }
-
-    public void setStrInstructions(String strInstructions) {
-        this.strInstructions = strInstructions;
-    }
-
-    public String getStrMealThumb() {
-        return strMealThumb;
-    }
-
-    public void setStrMealThumb(String strMealThumb) {
-        this.strMealThumb = strMealThumb;
-    }
-
-    public String getStrYoutube() {
-        return strYoutube;
-    }
-
-    public void setStrYoutube(String strYoutube) {
-        this.strYoutube = strYoutube;
     }
 
 }

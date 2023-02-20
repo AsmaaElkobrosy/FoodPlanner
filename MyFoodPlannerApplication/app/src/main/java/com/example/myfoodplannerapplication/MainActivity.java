@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,27 +15,36 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.myfoodplannerapplication.databinding.ActivityMainBinding;
+import com.example.myfoodplannerapplication.favourites.view.FavouriteFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding mainBinding;
     GoogleSignInOptions googlesignInOptions;
+    private FirebaseAuth firebaseAuth;
+
     GoogleSignInClient googlesignInClient;
-
-    HomeFragment homeFragment= new HomeFragment();
-
+    NavController navController;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        HomeFragment _home= new HomeFragment();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            //anonymous
+       // firebaseAuth = FirebaseAuth.getInstance();
+
+       mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
-        //replaceFragment(new HomeFragment());
-        //homeFragment= findViewById(R.id.homeFragment);
 
         googlesignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googlesignInClient = GoogleSignIn.getClient(this,googlesignInOptions);
@@ -51,17 +61,25 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
 
                 case R.id.nav_home:
-                    replaceFragment(homeFragment);
+                    replaceFragment(_home);
                     Toast.makeText(getApplicationContext(),"Home page",Toast.LENGTH_SHORT).show();
 
                     break;
                 case R.id.nav_favourites:
+                    if  (user.isAnonymous()){
+                        Toast.makeText(getApplicationContext(),"Register first to show",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
                     replaceFragment(new FavouriteFragment());
-                    Toast.makeText(getApplicationContext(),"your favourites",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"your favourites",Toast.LENGTH_SHORT).show();}
                     break;
                 case R.id.nav_plan:
+                    if  (user.isAnonymous()){
+                        Toast.makeText(getApplicationContext(),"Register first to show",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
                     replaceFragment(new MyWeeklyPlanFragment());
-                    Toast.makeText(getApplicationContext(),"Your Weekly Plan",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Your Weekly Plan",Toast.LENGTH_SHORT).show();}
                     break;
                 case R.id.nav_search:
                     replaceFragment(new SearchTypesFragment());
@@ -93,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.nav_logout:
                 Toast.makeText(this,"Logging out",Toast.LENGTH_SHORT).show();
+                //Facebook
+                FirebaseAuth.getInstance().signOut();
                 googlesignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

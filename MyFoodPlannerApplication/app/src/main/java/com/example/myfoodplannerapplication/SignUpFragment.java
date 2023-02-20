@@ -66,16 +66,17 @@ public class SignUpFragment extends Fragment {
 
     CallbackManager callbackManager;
     private FirebaseAuth mAuth;
+
     LoginButton fb_Btn;
 
     private static final int RC_SIGN_IN = 100;
     private FirebaseAuth auth;
-private EditText signupEmail,signupPass;
-private Button signupbutton;
-private TextView loginRedirectTeXT;
-GoogleSignInButton googleSignInButton;
-GoogleSignInOptions googlesignInOptions;
-GoogleSignInClient googlesignInClient;
+    private EditText signupEmail,signupPass;
+    private Button signupbutton;
+    private TextView loginRedirectTeXT;
+    GoogleSignInButton googleSignInButton;
+    GoogleSignInOptions googlesignInOptions;
+    GoogleSignInClient googlesignInClient;
 
 
 
@@ -155,11 +156,16 @@ GoogleSignInClient googlesignInClient;
             }
         });
 
+
+
+
+
         //Facebook
         callbackManager = CallbackManager.Factory.create();
 
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
+        //LoginManager.getInstance().registerCallback(callbackManager,
+        fb_Btn.setReadPermissions("email", "public_profile");
+        fb_Btn.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         handleFacebookAccessToken(loginResult.getAccessToken());
@@ -168,25 +174,29 @@ GoogleSignInClient googlesignInClient;
 
                     @Override
                     public void onCancel() {
-                        // App code
+                        Log.d("TAG", "facebook:onCancel");
                     }
 
                     @Override
                     public void onError(FacebookException exception) {
-                        // App code
+                        Log.d("TAG", "facebook:onError", exception);
                     }
                 });
-        fb_Btn.setOnClickListener(new View.OnClickListener() {
+        /*fb_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginManager.getInstance().logInWithPublishPermissions(getActivity(), Arrays.asList("public_profile"));
+                LoginManager.getInstance().logInWithPublishPermissions(getActivity(), Arrays.asList("email","public_profile"));
             }
-        });
+        });*/
 
     }
     @Override
     public void onActivityResult(int requestCode,int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //Facebook
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        //google
         if (requestCode==1000){
             Task<GoogleSignInAccount> task= GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -201,8 +211,15 @@ GoogleSignInClient googlesignInClient;
         }
 
         //Facebook
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        //callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
+    /*@Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }*/
 
     private void handleFacebookAccessToken(AccessToken token) {
 
@@ -221,9 +238,12 @@ GoogleSignInClient googlesignInClient;
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
                             Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            updateUI(null);
                         }
                     }
                 });
+
+
     }
 
     private void updateUI(FirebaseUser user) {

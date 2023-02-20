@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mealName= view.findViewById(R.id.mealname);
-        image= view.findViewById(R.id.imageView);
+        image= view.findViewById(R.id.mealtoday);
 
         Retrofit client= Api_Client.getApiClient();
         Api_Service api= client.create(Api_Service.class);

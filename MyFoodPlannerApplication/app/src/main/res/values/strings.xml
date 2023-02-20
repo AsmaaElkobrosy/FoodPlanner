@@ -14,8 +14,8 @@
     <string name="ingredients">Ingredients</string>
     <string name="area">Area</string>
     <string name="category">Category</string>
-    <string name="facebook_app_id">1234</string>
+    <string name="facebook_app_id">904783413981376</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">56789</string>
-
+    <string name="year">Feb 2023</string>
 </resources>

@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/more_vert/baseline_more_vert_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/calendar_month/baseline_calendar_month_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="more_icon" />
-                            <entry key="sourceFile" value="C:\Users\LapStore\OneDrive\Documents\FoodPlanner\MyFoodPlannerApplication" />
+                            <entry key="outputName" value="calendar_icon" />
+                            <entry key="sourceFile" value="C:\Users\lenovo\Downloads\fork-and-knife-meal-2-svgrepo-com.svg" />
                           </map>
                         </option>
                       </PersistentState>

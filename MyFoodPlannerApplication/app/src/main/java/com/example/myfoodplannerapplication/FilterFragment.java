@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.myfoodplannerapplication.databinding.ActivityMainBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -42,6 +47,9 @@ public class FilterFragment extends Fragment implements OnMealClickListener{
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     View v;
+    SearchView searchView;
+    //store data
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,9 +61,29 @@ public class FilterFragment extends Fragment implements OnMealClickListener{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        search_adapter= new searchAdapter(new ArrayList<>(), getContext(), this::onClick);
-        recyclerView= view.findViewById(R.id.filter_recyclerView);
 
+        //
+
+        search_adapter= new searchAdapter(new ArrayList<>(), getContext(), this::onMealClick);
+        recyclerView= view.findViewById(R.id.filter_recyclerView);
+        layoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(search_adapter);
+        searchView= view.findViewById(R.id.search_view_filter);
+        searchView.clearFocus();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
 
         Bundle bundle = this.getArguments();
 
@@ -69,7 +97,11 @@ public class FilterFragment extends Fragment implements OnMealClickListener{
 
         switch (filterBy){
             case "Area":
+                result = api.getByArea(type);
+                break;
             case "Category":
+                result = api.getByCategory(type);
+                break;
             case "Ingredient":
                 result = api.getByIngredients(type);
                 break;
@@ -77,9 +109,9 @@ public class FilterFragment extends Fragment implements OnMealClickListener{
         }
 
 
-        layoutManager=new LinearLayoutManager(getContext());
+    /*   layoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(search_adapter);
+        recyclerView.setAdapter(search_adapter);*/
         result.subscribeOn(Schedulers.io())
                 .map(ResultModel :: getMeals)
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(
@@ -101,13 +133,39 @@ public class FilterFragment extends Fragment implements OnMealClickListener{
         fragmentTransaction.commit();
     }
 
+    private void filter(String text) {
+        ArrayList<MealFullDetailes> filteredList = new ArrayList<>();
+        for (MealFullDetailes meal : search_adapter.getList()) {
+            if (meal.getStrMeal().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(meal);
+            }
+        }
+        if (filteredList.isEmpty()) {
+            Toast.makeText(getContext(), "No Result Found", Toast.LENGTH_SHORT).show();
+        } else {
+            searchAdapter adapter = new searchAdapter(filteredList, getContext(), new FilterFragment());
+            layoutManager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+        }
+    }
     @Override
-    public void onClick(MealFullDetailes meal) {
+    public void onMealClick(MealFullDetailes meal) {
         Bundle bundle = new Bundle();
-       // System.out.println(resultModel.getMeals().get(position));
+        // System.out.println(resultModel.getMeals().get(position));
         bundle.putString("mealid",meal.getIdMeal());
         Fragment fragment = new OneMealFragment();
         fragment.setArguments(bundle);
+        //System.out.println(bundle);
         replaceFragment(fragment);
     }
 }
+
+
+
+
+
+
+
+
+

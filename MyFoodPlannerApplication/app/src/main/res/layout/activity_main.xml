@@ -7,7 +7,7 @@
     android:id="@+id/navlayout"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".LogInFragment"
+    tools:context=".MainActivity"
     android:background="@color/grey">
 
     <androidx.constraintlayout.widget.Guideline

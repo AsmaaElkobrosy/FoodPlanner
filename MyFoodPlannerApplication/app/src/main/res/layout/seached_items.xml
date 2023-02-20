@@ -40,7 +40,7 @@
             app:layout_constraintGuide_begin="715dp" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imagerowmeal"
             android:layout_width="277dp"
             android:layout_height="241dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
@@ -51,16 +51,18 @@
         <TextView
             android:id="@+id/meal_title"
             android:layout_width="235dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="TextView"
             android:textColor="#121111"
             android:textSize="24sp"
             android:textStyle="bold|italic"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/imagerowmeal"
+            app:layout_constraintVertical_bias="0.193" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

@@ -11,6 +11,9 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
+            android:id="@+id/action_homeFragment_to_searchFragment2"
+            app:destination="@id/searchTypesFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_myWeeklyPlanFragment2"
             app:destination="@id/myWeeklyPlanFragment2" />
         <action
@@ -22,24 +25,27 @@
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
-        android:name="com.example.myfoodplannerapplication.FavouriteFragment"
+        android:name="com.example.myfoodplannerapplication.favourites.view.FavouriteFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
     <fragment
         android:id="@+id/myWeeklyPlanFragment2"
         android:name="com.example.myfoodplannerapplication.MyWeeklyPlanFragment"
         android:label="fragment_my_weekly_plan"
-        tools:layout="@layout/fragment_my_weekly_plan" />
+        tools:layout="@layout/fragment_my_weekly_plan" >
+        <action
+            android:id="@+id/action_myWeeklyPlanFragment2_to_dailyPlanFragment"
+            app:destination="@id/dailyPlanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchTypesFragment"
         android:name="com.example.myfoodplannerapplication.SearchTypesFragment"
         android:label="fragment_search_types"
-        tools:layout="@layout/fragment_search_types" />
-    <fragment
-        android:id="@+id/oneMealFragment"
-        android:name="com.example.myfoodplannerapplication.OneMealFragment"
-        android:label="onemealscreen"
-        tools:layout="@layout/onemealscreen" />
+        tools:layout="@layout/fragment_search_types" >
+        <action
+            android:id="@+id/action_searchTypesFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/filterFragment"
         android:name="com.example.myfoodplannerapplication.FilterFragment"
@@ -48,5 +54,17 @@
         <action
             android:id="@+id/action_filterFragment_to_oneMealFragment"
             app:destination="@id/oneMealFragment" />
+        <argument
+            android:name="filterByArgument"
+            app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/oneMealFragment"
+        android:name="com.example.myfoodplannerapplication.OneMealFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/onemealscreen" />
+    <fragment
+        android:id="@+id/dailyPlanFragment"
+        android:name="com.example.myfoodplannerapplication.DailyPlanFragment"
+        android:label="DailyPlanFragment" />
 </navigation>

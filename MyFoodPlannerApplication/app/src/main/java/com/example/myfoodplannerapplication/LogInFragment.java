@@ -7,7 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.room.Update;
 
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +25,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogInFragment extends Fragment {
     private FirebaseAuth auth;
     private EditText loginEmail,loginPass;
     private TextView signupRedirectTeXT;
     private Button loginpbutton;
+
+    private FirebaseAuth firebaseAuth;
+    private Button guest;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,11 +45,36 @@ public class LogInFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        guest= view.findViewById(R.id.guestBtn);
         auth = FirebaseAuth.getInstance();
         loginEmail = view.findViewById(R.id.login_email);
         loginPass = view.findViewById(R.id.login_pw);
         loginpbutton = view.findViewById(R.id.Loginbtn);
         signupRedirectTeXT = view.findViewById(R.id.signupredirecttext);
+
+        //anonymous
+        firebaseAuth = FirebaseAuth.getInstance();
+        guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                anonymousAuth();
+            }
+
+            private void anonymousAuth() {
+                firebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            FirebaseUser user= firebaseAuth.getCurrentUser();
+                            startActivity(new Intent(getActivity(),MainActivity.class));
+                        }else {
+                            Toast.makeText(getContext(),"Can not complete", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
 
         loginpbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +90,7 @@ public class LogInFragment extends Fragment {
                        public void onSuccess(AuthResult authResult) {
                            Toast.makeText(getContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(getActivity(),MainActivity.class));
-                          getActivity().finish();
+                          //getActivity().finish();
                        }
                    }).addOnFailureListener(new OnFailureListener() {
                        @Override
@@ -83,5 +114,6 @@ public class LogInFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_signUpFragment);
             }
         });
+
     }
 }

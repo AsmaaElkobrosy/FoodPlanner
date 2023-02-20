@@ -15,7 +15,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class searchAdapter extends RecyclerView.Adapter<searchAdapter.MyViewHolder> {
 
@@ -23,29 +22,38 @@ public class searchAdapter extends RecyclerView.Adapter<searchAdapter.MyViewHold
     Context context;
     OnMealClickListener listener;
 
-   public searchAdapter(ArrayList<MealFullDetailes> _mealsArrayList, Context context, OnMealClickListener _listener) {
+    public searchAdapter(ArrayList<MealFullDetailes> _mealsArrayList, Context context, OnMealClickListener _listener) {
         this.mealsArrayList = _mealsArrayList;
         this.context = context;
         this.listener = _listener;
     }
-    public void setList(ArrayList<MealFullDetailes>updatedMeals){this.mealsArrayList=updatedMeals;}
+
+    public void setList(ArrayList<MealFullDetailes> updatedMeals) {
+        this.mealsArrayList = updatedMeals;
+    }
+
+    public ArrayList<MealFullDetailes> getList() {
+        return mealsArrayList;
+    }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView meal_title;
-        ImageView image;
+        TextView main_title;
+        ImageView imagerow;
 
         public MyViewHolder(@NonNull View itemView, OnMealClickListener listener) {
             super(itemView);
             meal_title = itemView.findViewById(R.id.meal_title);
-            image = itemView.findViewById(R.id.imageView);
+            imagerow = itemView.findViewById(R.id.imagerowmeal);
+
         }
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seached_items, parent,false);
-        MyViewHolder myViewHolder = new MyViewHolder(view,listener);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seached_items, parent, false);
+        MyViewHolder myViewHolder = new MyViewHolder(view, listener);
         context = parent.getContext();
         return myViewHolder;
     }
@@ -56,19 +64,21 @@ public class searchAdapter extends RecyclerView.Adapter<searchAdapter.MyViewHold
         MealFullDetailes meal = mealsArrayList.get(position);
         holder.meal_title.setText(meal.getStrMeal());
         Glide.with(context).load(meal.getStrMealThumb()).apply(new RequestOptions()
-                .override(150,150)).into(holder.image);
+                .override(150, 150)).into(holder.imagerow);
 
-        holder.image.setOnClickListener(new View.OnClickListener() {
+        holder.imagerow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(meal);
+            listener.onMealClick(meal);
             }
         });
-    }
 
+
+    }
 
     @Override
     public int getItemCount() {
         return mealsArrayList.size();
     }
 }
+

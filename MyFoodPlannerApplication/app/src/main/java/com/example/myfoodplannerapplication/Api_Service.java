@@ -12,4 +12,10 @@ public interface Api_Service { //https://rb.gy/gsqowv
     Observable<ResultModel> getByIngredients(@Query("i") String ingredient);
     @GET("/api/json/v1/1/lookup.php")
     Observable<ResultModel> getMealDetails(@Query("i") String mealId);
+
+    @GET("/api/json/v1/1/filter.php")
+    Observable<ResultModel> getByArea(@Query("a") String area);
+
+    @GET("/api/json/v1/1/filter.php")
+    Observable<ResultModel> getByCategory(@Query("c") String category);
 }
