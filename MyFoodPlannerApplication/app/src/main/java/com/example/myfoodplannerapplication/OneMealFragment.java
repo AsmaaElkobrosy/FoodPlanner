@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -42,13 +43,13 @@ import retrofit2.Retrofit;
 
 public class OneMealFragment extends Fragment {
 
-    FirebaseDatabase database= FirebaseDatabase.getInstance();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     ImageView starFav;
     ImageView mealimage;
     TextView mealName;
-    TextView originCountry;
+    TextView originCountry, steps, ingredientstext;
     Button playVideo;
     Button calender;
     String id;
@@ -74,33 +75,35 @@ public class OneMealFragment extends Fragment {
         originCountry= view.findViewById(R.id.txtoriginC);
         playVideo= view.findViewById(R.id.Playbtn);
         calender= view.findViewById(R.id.addtoplan_btn);
+        steps=view.findViewById(R.id.txtsteps);
+        ingredientstext=view.findViewById(R.id.txtingre);
 
-        meal= new MealFullDetailes();
-        dataSource= new LocalMealDataSource(getContext());
-        plannedMeal= new MealPlan();
-        planDataSource= new PlanMealDataSource(getContext());
+        meal = new MealFullDetailes();
+        dataSource = new LocalMealDataSource(getContext());
+        plannedMeal = new MealPlan();
+        planDataSource = new PlanMealDataSource(getContext());
 
         Bundle bundle = this.getArguments();
-        if(bundle != null){
-            id= bundle.getString("mealid");
+        if (bundle != null) {
+            id = bundle.getString("mealid");
         }
 
-        Retrofit client= Api_Client.getApiClient();
-        Api_Service api= client.create(Api_Service.class);
+        Retrofit client = Api_Client.getApiClient();
+        Api_Service api = client.create(Api_Service.class);
         Observable<ResultModel> result = api.getMealDetails(id);
 
         result.subscribeOn(Schedulers.io())
-                .map(ResultModel :: getMeals)
+                .map(ResultModel::getMeals)
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(
                         item -> {
-                            meal=item.get(0);
+                            meal = item.get(0);
                             mealName.setText(meal.getStrMeal());
-                            originCountry.setText("Country:  "+meal.getStrArea()+ "\n"+"\n");
-                            originCountry.append("Steps:  " +meal.getStrInstructions()+"\n");
-                            originCountry.append("ingredient:   " + meal.getStrIngredient1()+", "+meal.getStrIngredient2()+
-                                    ", "+meal.getStrIngredient3()+", "+meal.getStrIngredient4()+", "+meal.getStrIngredient5()+"\n"+"\n");
+                            originCountry.setText("Country:  " + meal.getStrArea() + "\n");
+                            steps.setText("Steps:  " + meal.getStrInstructions() + "\n");
+                            ingredientstext.setText("ingredient:   " + meal.getStrIngredient1() + ", " + meal.getStrIngredient2() +
+                                    ", " + meal.getStrIngredient3() + ", " + meal.getStrIngredient4() + ", " + meal.getStrIngredient5() + "\n" + "\n");
                             Glide.with(getContext()).load(meal.getStrMealThumb()).apply(new RequestOptions()
-                                    .override(150,150)).into(mealimage);
+                                    .override(150, 150)).into(mealimage);
 
                         },
                         error -> Log.i("TAG", "onViewCreated: " + error.getMessage())
@@ -161,8 +164,8 @@ public class OneMealFragment extends Fragment {
         playVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getActivity(), YouTubePlayerActivity.class);
-                intent.putExtra("url",meal.getStrYoutube());
+                Intent intent = new Intent(getActivity(), YouTubePlayerActivity.class);
+                intent.putExtra("url", meal.getStrYoutube());
                 startActivity(intent);
             }
         });

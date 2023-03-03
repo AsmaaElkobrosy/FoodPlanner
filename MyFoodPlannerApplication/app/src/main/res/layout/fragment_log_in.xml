@@ -57,9 +57,7 @@
         android:id="@+id/login_pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="86dp"
         android:background="@drawable/buttons"
         android:drawableStart="@drawable/key_icon"
         android:drawablePadding="4dp"
@@ -122,12 +120,14 @@
         android:id="@+id/guestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Try as a guest"
         android:textColor="@color/black_new"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/signupredirecttext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

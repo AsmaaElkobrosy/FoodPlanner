@@ -2,5 +2,6 @@
 <resources>
     <style name="circular">
         <item name="cornerSize">10%</item>
+
     </style>
 </resources>

@@ -61,6 +61,8 @@
             android:text="TextView"
             android:textColor="#121111"
             android:textSize="30sp"
+            android:paddingBottom="20dp"
+            android:layout_marginBottom="20dp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"

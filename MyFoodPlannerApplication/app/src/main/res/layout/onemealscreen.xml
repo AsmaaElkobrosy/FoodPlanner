@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context=".OneMealFragment">
+    tools:context=".OneMealFragment"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,22 +18,22 @@
             android:layout_width="233dp"
             android:layout_height="233dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
-            app:shapeAppearanceOverlay="@style/circular"
             android:padding="5dp"
-            app:strokeWidth="3dp"
-            app:strokeColor="@color/orange"
-            app:layout_constraintBottom_toTopOf="@+id/txtname"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
+            app:shapeAppearanceOverlay="@style/circular"
+            app:srcCompat="@android:drawable/sym_def_app_icon"
+            app:strokeColor="@color/orange"
+            app:strokeWidth="3dp" />
 
         <TextView
             android:id="@+id/txtname"
             android:layout_width="254dp"
             android:layout_height="54dp"
-            android:layout_marginBottom="27dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginBottom="16dp"
             android:layout_weight="@dimen/one"
             android:fontFamily="cursive"
             android:lines="3"
@@ -40,25 +41,83 @@
             android:textColor="@color/orange"
             android:textSize="42sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/txtoriginC"
+            app:layout_constraintBottom_toTopOf="@+id/card1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mealimg" />
+            app:layout_constraintTop_toBottomOf="@+id/mealimg"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/txtoriginC"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="23dp"
-            android:layout_marginEnd="27dp"
-            android:layout_weight="@dimen/one"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="9dp"
+            android:elevation="10dp"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/card2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.157"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtname">
+
+            <TextView
+                android:id="@+id/txtoriginC"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="23dp"
+                android:layout_marginEnd="27dp"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="232dp"
+            android:elevation="10dp"
+            app:cardBackgroundColor="#FDB044"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card1">
+
+            <TextView
+                android:id="@+id/txtsteps"
+                android:layout_width="348dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="23dp"
+                android:layout_marginEnd="27dp"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="32dp"
+            android:elevation="10dp"
+            app:cardBackgroundColor="#F9DE8A"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.842"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card2">
+
+            <TextView
+                android:id="@+id/txtingre"
+                android:layout_width="348dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="23dp"
+                android:layout_marginEnd="27dp"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/Playbtn"
@@ -93,12 +152,12 @@
             android:id="@+id/starimg"
             android:layout_width="58dp"
             android:layout_height="66dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginEnd="88dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/mealimg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mealimg"
-            app:layout_constraintVertical_bias="0.567"
+            app:layout_constraintVertical_bias="0.716"
             app:srcCompat="@drawable/startofavicon" />
 
         <Button
