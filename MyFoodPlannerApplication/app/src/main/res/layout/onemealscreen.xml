@@ -12,12 +12,16 @@
         android:layout_height="match_parent">
 
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mealimg"
-            android:layout_width="366dp"
-            android:layout_height="179dp"
+            android:layout_width="233dp"
+            android:layout_height="233dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="24dp"
+            app:shapeAppearanceOverlay="@style/circular"
+            android:padding="5dp"
+            app:strokeWidth="3dp"
+            app:strokeColor="@color/orange"
             app:layout_constraintBottom_toTopOf="@+id/txtname"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +42,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/txtoriginC"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.445"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mealimg" />
 
@@ -59,55 +63,17 @@
         <Button
             android:id="@+id/Playbtn"
             android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="@dimen/one"
             android:background="@drawable/circle_icon"
             android:text=" "
             android:textColor="@color/orange"
-            app:layout_constraintBottom_toBottomOf="@+id/mealimg"
-            app:layout_constraintStart_toStartOf="@+id/mealimg"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/starimg"
-            android:layout_width="49dp"
-            android:layout_height="51dp"
-            android:layout_marginEnd="88dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mealimg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mealimg"
-            app:layout_constraintVertical_bias="0.44"
-            app:srcCompat="@drawable/startofavicon" />
-        <Button
-            android:id="@+id/addtoplan_btn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/calendar_icon"
-            android:backgroundTint="@color/orange"
-            android:text=" "
-            android:textColor="@color/black_new"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.925"
+            app:layout_constraintEnd_toStartOf="@+id/mealimg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="56dp"
-            android:layout_height="62dp"
-            android:gravity="center|top"
-            android:text="Add To Plan"
-            android:textColor="@color/black_new"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/addtoplan_btn"
-            app:layout_constraintStart_toStartOf="@+id/addtoplan_btn"
-            app:layout_constraintTop_toBottomOf="@+id/addtoplan_btn" />
 
         <TextView
             android:id="@+id/textView5"
@@ -122,6 +88,47 @@
             app:layout_constraintEnd_toEndOf="@+id/Playbtn"
             app:layout_constraintStart_toStartOf="@+id/Playbtn"
             app:layout_constraintTop_toBottomOf="@+id/Playbtn" />
+
+        <ImageView
+            android:id="@+id/starimg"
+            android:layout_width="58dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="72dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mealimg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mealimg"
+            app:layout_constraintVertical_bias="0.567"
+            app:srcCompat="@drawable/startofavicon" />
+
+        <Button
+            android:id="@+id/addtoplan_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/calendar_icon"
+            android:backgroundTint="@color/orange"
+            android:text=" "
+            android:textColor="@color/black_new"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mealimg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="56dp"
+            android:layout_height="62dp"
+            android:gravity="center|top"
+            android:text="Add To Plan"
+            android:textColor="@color/black_new"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/addtoplan_btn"
+            app:layout_constraintStart_toStartOf="@+id/addtoplan_btn"
+            app:layout_constraintTop_toBottomOf="@+id/addtoplan_btn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

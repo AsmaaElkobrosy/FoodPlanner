@@ -41,23 +41,28 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="cursive"
         android:text="A Meal For Today"
         android:textColor="@color/black_new"
-        android:textSize="32dp"
+        android:textSize="42dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/homeMeal_ImgView"
         android:layout_width="364dp"
-        android:layout_height="353dp"
+        android:layout_height="364dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_launcher_foreground"
+        app:shapeAppearanceOverlay="@style/circular"
+        android:padding="1dp"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/orange"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="@+id/guideline"

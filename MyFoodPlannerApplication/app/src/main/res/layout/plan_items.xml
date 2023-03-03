@@ -39,10 +39,14 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="715dp" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/plan_imageView"
             android:layout_width="137dp"
-            android:layout_height="119dp"
+            android:layout_height="137dp"
+            app:shapeAppearanceOverlay="@style/circular"
+            android:padding="1dp"
+            app:strokeWidth="3dp"
+            app:strokeColor="@color/orange"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="@+id/guideline2"
             app:srcCompat="@drawable/logo" />

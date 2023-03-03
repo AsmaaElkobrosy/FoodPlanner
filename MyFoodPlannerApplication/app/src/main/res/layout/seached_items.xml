@@ -39,24 +39,28 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="715dp" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView"
-            android:layout_width="277dp"
-            android:layout_height="241dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            app:shapeAppearanceOverlay="@style/circular"
+            android:padding="1dp"
+            app:strokeWidth="3dp"
+            app:strokeColor="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline2"
             app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/meal_title"
             android:layout_width="235dp"
-            android:layout_height="57dp"
+            android:layout_height="0dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="TextView"
             android:textColor="#121111"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
