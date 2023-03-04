@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="fff002" />
-                            <entry key="outputName" value="yellow_star" />
-                            <entry key="sourceFile" value="C:\Users\lenovo\Downloads\fork-and-knife-meal-2-svgrepo-com.svg" />
+                            <entry key="outputName" value="flag_maps_and_flags_svgrepo_com" />
+                            <entry key="sourceFile" value="C:\Users\LapStore\Downloads\flag-maps-and-flags-svgrepo-com.svg" />
                           </map>
                         </option>
                       </PersistentState>
